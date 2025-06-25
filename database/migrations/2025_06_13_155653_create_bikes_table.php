@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bikes', function (Blueprint $table) {
+            $table->id();
             $table->string('plate_number',6)->unique();
-            $table->string('model', 10);
+            $table->string('model', 20);
             $table->integer('model_year');
-            $table->string('chassis_number',10);
-            $table->string('engine_number', 10);
+            $table->string('chassis_number',10)->unique();
+            $table->string('engine_number', 10)->unique();
             $table->string('mulkiya_front_image');
             $table->string('mulkiya_back_image');
             $table->timestamps();

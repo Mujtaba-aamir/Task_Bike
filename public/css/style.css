@@ -84,3 +84,22 @@ button:hover {
     padding-left: 20px;
 }
 
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    max-width: 600px;
+}
+
+.form-row label {
+    flex: 0 0 180px;
+    color: rgb(4, 0, 0);
+    font-weight: bold;
+}
+
+.form-row input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
