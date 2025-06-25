@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('plate_number',6)->unique();
             $table->string('model', 10);
             $table->integer('model_year');
-            $table->string('chassis_number',10);
-            $table->string('engine_number', 10);
+            $table->string('chassis_number',10)->unique();
+            $table->string('engine_number', 10)->unique();
             $table->string('mulkiya_front_image');
             $table->string('mulkiya_back_image');
             $table->timestamps();
