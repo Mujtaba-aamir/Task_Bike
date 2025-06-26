@@ -6,20 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
  <link rel="stylesheet" href="/css/create.css">
 
-    <title>Bikeaa</title>
+    <title>Ride Secure</title>
 </head>
 <body>
-    <form action="/bike/store" method="POST" enctype="multipart/form-data">
-     @csrf
-     <input type="text" name="plate_number" placeholder="Plate Number" required>
-     <input type="text" name="model" placeholder="Model" required>
-     <input type="number" name="model_year" placeholder="Model Year" required>
-     <input type="text" name="chassis_number" placeholder="Chassis Number" required>
-     <input type="text" name="engine_number" placeholder="Engine Number" required>
-      <label for="" style="color: white", >Mulkiya Front Image</label> <input type="file" name="mulkiya_front_image" required>
-      <label for="" style="color: white" >Mulkiya Back Image</label><input type="file" name="mulkiya_back_image" required>
-     <button type="submit">Register Bike</button>
- </form>
+    <form action="{{ route('bike.store') }}" method="POST" enctype="multipart/form-data">
+       @csrf
+        <input type="text" name="plate_number" placeholder="Plate Number" required>
+        <input type="text" name="model" placeholder="Model" required>
+        <input type="number" name="model_year" placeholder="Model Year" required>
+        <input type="text" name="chassis_number" placeholder="Chassis Number" required>
+        <input type="text" name="engine_number" placeholder="Engine Number" required>
+        <label for="" style="color: white" >Mulkiya Front Image</label> <input type="file" name="mulkiya_front_image" required>
+        <label for="" style="color: white" >Mulkiya Back Image</label><input type="file" name="mulkiya_back_image" required>
+        <button type="submit">Register Bike</button>
+       
+    </form>
+
+    @if (session('msg'))
+        <div class="custom-alert success">
+            {{ session('msg') }}
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="custom-alert error">
+           <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+           </ul>
+        </div>
+    @endif
+
 
 </body>
 </html>

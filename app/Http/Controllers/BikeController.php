@@ -3,100 +3,91 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\bike;
-use Illuminate\Support\Facades\DB;
-
+use App\Models\Bike;
 
 class BikeController extends Controller
 {
-    public function ShowForm(){
-        return view ('Form');
-    }
-
-    public function StoreData(Request $req)
+    public function createBike()
     {
-        $data=$req->validate([
-         'plate_number' => 'required|unique:bikes,plate_number',
-         'model' => 'required',
-         'model_year' => 'required|integer',
-         'chassis_number' => 'required|unique:bikes,chassis_number',
-         'engine_number' => 'required|unique:bikes,engine_number',
-         'mulkiya_front_image' => 'required|image',
-         'mulkiya_back_image' => 'required|image'
+        return view ('bike.create');
+    }
+
+    public function storeBike(Request $request)
+    {
+        $bike = $request->validate([
+            'plate_number' => 'required|unique:bikes,plate_number',
+            'model' => 'required',
+            'model_year' => 'required|integer',
+            'chassis_number' => 'required|unique:bikes,chassis_number',
+            'engine_number' => 'required|unique:bikes,engine_number',
+            'mulkiya_front_image' => 'required|image',
+            'mulkiya_back_image' => 'required|image'
         ]);
 
-        $data['mulkiya_front_image']=$req->file('mulkiya_front_image')->store('mulkiya_images', 'public');
-            $data['mulkiya_back_image']=$req->file('mulkiya_back_image')->store('mulkiya_images', 'public');
+        $bike['mulkiya_front_image'] = $request->file('mulkiya_front_image')->store('mulkiya_images', 'public');
+        $bike['mulkiya_back_image'] = $request->file('mulkiya_back_image')->store('mulkiya_images', 'public');
 
-       $success=DB::table('bikes')->insert([
-        'plate_number' => $data['plate_number'],
-         'model' => $data['model'],
-         'model_year' => $data['model_year'],
-         'chassis_number' => $data['chassis_number'],
-         'engine_number' => $data['engine_number'],
-         'mulkiya_front_image' => $data['mulkiya_front_image'],
-         'mulkiya_back_image' => $data['mulkiya_back_image']
-  
+        $createdBike=Bike::create([
+            'plate_number' => $bike['plate_number'],
+            'model' => $bike['model'],
+            'model_year' => $bike['model_year'],
+            'chassis_number' => $bike['chassis_number'],
+            'engine_number' => $bike['engine_number'],
+            'mulkiya_front_image' => $bike['mulkiya_front_image'],
+            'mulkiya_back_image' => $bike['mulkiya_back_image']
         ]);
 
-        if($success)
-        {
-           return redirect()->back()->with('msg', 'Bike Registered Successfully');
-        }      
-        
+        if($createdBike){
+            return redirect()->route('bike.create')->with('msg', 'Bike Registered Successfully');
+        }         
+        return redirect()->route('bike.create')->with('msg', 'Bike Registration Unsuccessful');
     }
 
-    public function ShowTable(){
-        $bikes=DB::table('bikes')->get();
-        return view('Table',['BikeData'=> $bikes]);
+    public function indexBike()
+    {
+        $bikes = Bike::all();
+        return view('bike.index', compact('bikes'));
     }
 
-    public function SingleBike($id){
-        $singleBike=DB::table('bikes')->where('id', $id)->first();
-        return view('ViewBike', ['data'=> $singleBike]);
+    public function viewBike(string $id)
+    {
+        $bike = Bike::find($id);
+        return view('bike.view',compact('bike'));
     }
 
-    public function DeleteBike($id){
-      $delete=DB::table('bikes')->where('id', $id)->delete();
-      
-      if($delete){
-        return back();
-      }
+    public function deleteBike(string $id)
+    {
+        $bike = Bike::find($id);
+        $deletedBike = $bike->delete();
 
-      else
-       {
-          echo "<h1>Data not Deleted</h1>";
-
-       }
-    }
-
-     public function Update($id){
-        $bike=DB::table('bikes')->where('id', $id)->first();
-        return view('Update',['data'=>$bike]);
-     }
-
-
-     public function UpdateBike($id , Request $req){
-        
-         
-            $bike=DB::table('bikes')->where('id', $id)->update([
-           'plate_number'=>$req->plate_number,
-           'model'=>$req->model,
-           'model_year'=>$req->model_year,
-           'chassis_number'=>$req->chassis_number,
-           'engine_number'=>$req->engine_number,
-           'mulkiya_front_image'=>$req->file('mulkiya_front_image')->store('mulkiya', 'public'),
-           'mulkiya_back_image'=>$req->file('mulkiya_back_image')->store('mulkiya', 'public'),
-
-
-            ]);
-        if($bike){
-
-         return redirect()->back()->with('msg', 'Bike Updated Successfully');
-
+        if($deletedBike){
+            return redirect()->route('bike.index');
         }
-     }
+        return redirect()->route('bike.index')->with('error', 'Bike not deleted!');
+        
+    }
 
+    public function editBike(string $id)
+    {
+        $bike = Bike::find($id);
+        return view('bike.edit',compact('bike'));
+    }
+
+    public function updateBike(string $id , Request $request)
+    {
+        $updatedbike=Bike::find($id)->update([
+            'plate_number' => $request->plate_number,
+            'model' => $request->model,
+            'model_year' => $request->model_year,
+            'chassis_number' => $request->chassis_number,
+            'engine_number' => $request->engine_number,
+            'mulkiya_front_image' => $request->file('mulkiya_front_image')->store('mulkiya', 'public'),
+            'mulkiya_back_image' => $request->file('mulkiya_back_image')->store('mulkiya', 'public'),
+        ]);
+     
+        if($updatedbike){
+           return redirect()->back()->with('msg', 'Bike Updated Successfully');
+        }
+        return redirect()->back()->with('msg', 'Bike Updation Unsuccessful');
+    }
 }
-
-

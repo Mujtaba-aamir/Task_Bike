@@ -60,6 +60,7 @@ button:hover {
 .bike-info.active {
     display: block;
 }
+
 .custom-alert {
     width: 350px;
     margin-left: 60px;
