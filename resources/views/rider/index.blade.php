@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bike Data</title>
+    <title>Rider Data</title>
 </head>
 <style>
     body {
@@ -45,8 +45,8 @@
     }
 
     table.container {
-        width: 90%;
-        margin: 0 auto;
+        width: 100%;
+        margin-left: -50px;
         border-collapse: collapse;
         background-color: white;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -81,11 +81,11 @@
     }
 
     #delete a {
-    color: #e74c3c; /* red */
+        color: #e74c3c; /* red */
     }
 
     #update a {
-    color: #f1c40f; /* yellow */
+        color: #f1c40f; /* yellow */
     }
 
   
@@ -128,92 +128,97 @@
         cursor: default;
     }
 
-      nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #222;
-      padding: 1rem 2rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 2;
-
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222;
+        padding: 1rem 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
     }
 
     nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1rem;
-      position: relative;
-      transition: color 0.3s;
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1rem;
+        position: relative;
+        transition: color 0.3s;
     }
 
     nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background-color: #00cc99;
-      transition: width 0.3s;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: #00cc99;
+        transition: width 0.3s;
     }
 
     nav a:hover::after,
     nav a:focus::after {
-      width: 100%;
+        width: 100%;
     }
 </style>
 
 <body>
-     <nav>
-  <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
-    RideSecure
-  </div>
-  <div style="display: flex; justify-content: center; gap: 2rem;">
-    <a href="<?php echo e(route('bike.home')); ?>">Home</a>
-    <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
-    <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
-    <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
-    <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
-  </div>
-</nav>
-    <h1>Here's data of all the Registered Bikes</h1>
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+            RideSecure
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="{{ route('bike.home') }}">Home</a>
+            <a href="{{ route('bike.create') }}">Register Your Bike</a>
+            <a href="{{ route('bike.index') }}">View Registered Bikes</a>
+            <a href="{{ route('rider.create') }}">Register Rider</a>
+            <a href="{{ route('rider.index') }}">View Registered Riders</a>
+        </div>
+    </nav>
+    <h1>Here's data of all the Registered Riders</h1>
     
     <table class="container">
         <tr>
             <th>ID</th>
-            <th>Plate Number</th>
-            <th>Model</th>
-            <th>Model Year</th>
-            <th>Chassis Number</th>
-            <th>Engine Number</th>
+           <th>Full Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Emirates ID Number</th>
+            <th>Passport Number</th>
+            <th>Visa Expiry Date</th>
+            <th>Date of Birth</th>
+            <th>Status</th>
             <th>View</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>
-        <?php $__currentLoopData = $bikes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bike): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        @foreach ($riders as $rider)
         <tr>
-           <td><?php echo e($bike->id); ?></td>
-           <td><?php echo e($bike->plate_number); ?> </td>
-           <td><?php echo e($bike->model); ?></td>
-           <td><?php echo e($bike->model_year); ?></td>
-           <td><?php echo e($bike->chassis_number); ?></td>
-           <td><?php echo e($bike->engine_number); ?></td>
-           <td id="view"><a href="<?php echo e(route('bike.view',$bike->id)); ?>">View</a></td>
-           <td id="delete"><a href="<?php echo e(route('bike.delete',$bike->id)); ?>">Delete</a></td>
-           <td id="update"><a href="<?php echo e(route('bike.edit',$bike->id)); ?>">Update</a></td>   
+           <td>{{ $rider->id }}</td>
+           <td>{{ $rider->full_name }}</td>
+           <td>{{ $rider->mobile_number }} </td>
+           <td>{{ $rider->email }}</td>
+           <td>{{ $rider->emirates_id_number }}</td>
+           <td>{{ $rider->passport_number }}</td>
+           <td>{{ $rider->visa_expiry_date }}</td>                
+           <td>{{ $rider->date_of_birth }}</td>
+           <td>{{ $rider->status }}</td>
+           <td id="view"><a href="{{ route('rider.view',$rider->id) }}">View</a></td>
+           <td id="delete"><a href="{{ route('rider.delete',$rider->id) }}">Delete</a></td>
+           <td id="update"><a href="{{ route('rider.edit',$rider->id) }}">Update</a></td>   
         </tr>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+        @endforeach  
     </table>
 
-<?php if(session('error')): ?>
-    <script>alert('<?php echo e(session('error')); ?>');</script>
-<?php endif; ?>
+    @if(session('error'))
+        <script>alert('{{ session('error') }}');</script>
+    @endif
 
  
 </body>
-</html><?php /**PATH C:\Laravel Code\Task\resources\views/bike/index.blade.php ENDPATH**/ ?>
+</html>

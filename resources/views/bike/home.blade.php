@@ -6,114 +6,101 @@
   <title>RideSecure</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background: linear-gradient(to right, #ffffff, #f0f0f0);
+        background: linear-gradient(to right, #ffffff, #f0f0f0);
     }
 
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #222;
-      padding: 1rem 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222;
+        padding: 1rem 2rem;
     }
 
-    .logo {
-      color: #00cc99;
-      font-size: 1.8rem;
-      font-weight: bold;
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1rem;
+        position: relative;
+        transition: color 0.3s;
     }
 
-    .register-link a {
-      color: #fff;
-      text-decoration: none;
-      background-color: #00cc99;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      transition: background 0.3s;
+    nav a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: #00cc99;
+        transition: width 0.3s;
     }
 
-    .register-link a:hover {
-      background-color: #009977;
+    nav a:hover::after,
+    nav a:focus::after {
+        width: 100%;
     }
 
     .hero {
-      text-align: center;
-      padding: 4rem 2rem;
+        text-align: center;
+        padding: 4rem 2rem;
     }
 
     .hero img {
-      max-width: 90%;
-      height: auto;
-      padding-top: 20px ;
+        max-width: 90%;
+        height: auto;
+        padding-top: 20px;
     }
 
     .hero h1 {
-      margin-top: 2rem;
-      font-size: 2.2rem;
-      color: #333;
+        margin-top: 2rem;
+        font-size: 2.2rem;
+        color: #333;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      color: #555;
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        color: #555;
     }
 
-       .view-link a {
-  color: #fff;
-  text-decoration: none;
-  background-color: #00cc99;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin-left: 10px;
-  transition: background 0.3s;
-}
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 1.6rem;
+        }
 
-.view-link a:hover {
-  background-color: #009977;
-}
-
-  @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 1.6rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .register-link {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-start;
-  }
-}
-
+        .hero p {
+            font-size: 1rem;
+        }
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="logo">RideSecure</div>
-    <div class="register-link">
-      <a href="{{ route('bike.create') }}">Register Your Bike</a>
-      <span class="view-link">
-        <a href="{{ route('bike.index') }}">View Registered Bikes</a>
-      </span>
-    </div>
-  </nav>
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+            RideSecure
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="{{ route('bike.home') }}">Home</a>
+            <a href="{{ route('bike.create') }}">Register Your Bike</a>
+            <a href="{{ route('bike.index') }}">View Registered Bikes</a>
+            <a href="{{ route('rider.create') }}">Register Rider</a>
+            <a href="{{ route('rider.index') }}">View Registered Riders</a>
+        </div>
+    </nav>
 
-  <div class="hero">
-    <h1>Every Ride Deserves Recognition</h1>
-    <p>Register your bike with ease and ensure its identity is protected—because every journey matters.</p>
-    <img src="https://images.unsplash.com/photo-1578721356725-b9002f477530?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fG1vdG90YmlrZXxlbnwwfHwwfHx8MA%3D%3D" alt="Bike Image"/>
-  </div>
+    <div class="hero">
+        <h1>Every Ride Deserves Recognition</h1>
+        <p>Register your bike with ease and ensure its identity is protected—because every journey matters.</p>
+        <img src="https://images.unsplash.com/photo-1578721356725-b9002f477530?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Bike Image"/>
+    </div>
 </body>
 </html>
