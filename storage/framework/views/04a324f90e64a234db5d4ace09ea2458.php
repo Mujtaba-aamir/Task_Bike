@@ -45,8 +45,8 @@
     }
 
     table.container {
-        width: 90%;
-        margin: 0 auto;
+        width: 100%;
+        margin-left: -50px;
         border-collapse: collapse;
         background-color: white;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -186,26 +186,32 @@
     <table class="container">
         <tr>
             <th>ID</th>
-            <th>Plate Number</th>
-            <th>Model</th>
-            <th>Model Year</th>
-            <th>Chassis Number</th>
-            <th>Engine Number</th>
+            <th>Full Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Emirates ID Number</th>
+            <th>Passport Number</th>
+            <th>Visa Expiry Date</th>
+            <th>Date of Birth</th>
+            <th>Status</th>
             <th>View</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>
-        <?php $__currentLoopData = $bikes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bike): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $riders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <tr>
-           <td><?php echo e($bike->id); ?></td>
-           <td><?php echo e($bike->plate_number); ?> </td>
-           <td><?php echo e($bike->model); ?></td>
-           <td><?php echo e($bike->model_year); ?></td>
-           <td><?php echo e($bike->chassis_number); ?></td>
-           <td><?php echo e($bike->engine_number); ?></td>
-           <td id="view"><a href="<?php echo e(route('bike.view',$bike->id)); ?>">View</a></td>
-           <td id="delete"><a href="<?php echo e(route('bike.delete',$bike->id)); ?>">Delete</a></td>
-           <td id="update"><a href="<?php echo e(route('bike.edit',$bike->id)); ?>">Update</a></td>   
+           <td><?php echo e($rider->id); ?></td>
+           <td><?php echo e($rider->full_name); ?></td>
+           <td><?php echo e($rider->mobile_number); ?> </td>
+           <td><?php echo e($rider->email); ?></td>
+           <td><?php echo e($rider->emirates_id_number); ?></td>
+           <td><?php echo e($rider->passport_number); ?></td>
+           <td><?php echo e($rider->visa_expiry_date); ?></td>                
+           <td><?php echo e($rider->date_of_birth); ?></td>
+           <td><?php echo e($rider->status); ?></td>
+           <td id="view"><a href="<?php echo e(route('rider.view',$rider->id)); ?>">View</a></td>
+           <td id="delete"><a href="<?php echo e(route('rider.delete',$rider->id)); ?>">Delete</a></td>
+           <td id="update"><a href="<?php echo e(route('rider.edit',$rider->id)); ?>">Update</a></td>   
         </tr>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
     </table>
@@ -216,4 +222,4 @@
 
  
 </body>
-</html><?php /**PATH C:\Laravel Code\Task\resources\views/bike/index.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Laravel Code\Task\resources\views/rider/index.blade.php ENDPATH**/ ?>

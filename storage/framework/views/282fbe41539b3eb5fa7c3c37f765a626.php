@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-      body {
+   body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(to right, #e0eafc, #cfdef3);
   color: #333;
@@ -16,6 +16,7 @@
   flex-direction: column;
   align-items: center;
 }
+
 
     h1 {
         font-size: 2.5em;
@@ -34,7 +35,7 @@
         border-radius: 4px;
     }
 
-        nav {
+      nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -46,6 +47,7 @@
   background-color: #222;
   padding: 1rem 2rem;
 }
+
 
     nav a {
       color: #fff;
@@ -87,11 +89,15 @@
     <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
   </div>
 </nav>
-    <h1>Bike <span>#<?php echo e($bike->id); ?> </span>Detail</h1>
-    <h3>Plate Number: <?php echo e($bike->plate_number); ?></h3>
-    <h3>Model: <?php echo e($bike->model); ?></h3>
-    <h3>Model Year: <?php echo e($bike->model_year); ?></h3>
-    <h3>Chassis Number: <?php echo e($bike->chassis_number); ?></h3>
-    <h3>Engine Number: <?php echo e($bike->engine_number); ?></h3>
+    <h1>Rider <span>#<?php echo e($rider->id); ?> </span>Detail</h1>
+    <h3>Full Name: <?php echo e($rider->full_name); ?></h3>
+    <h3>Mobile Number: <?php echo e($rider->mobile_number); ?></h3>
+    <h3>Email: <?php echo e($rider->email); ?></h3>
+    <h3>Emirates ID Number: <?php echo e($rider->emirates_id_number); ?></h3>
+    <h3>Passport Number: <?php echo e($rider->passport_number); ?></h3>
+    <h3>Visa Expiry Date: <?php echo e($rider->visa_expiry_date); ?></h3>
+    <h3>Date of Birth: <?php echo e($rider->date_of_birth); ?></h3>
+    <h3>Status: <?php echo e($rider->status); ?></h3>
+
 </body>
-</html><?php /**PATH C:\Laravel Code\Task\resources\views/bike/view.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Laravel Code\Task\resources\views/rider/view.blade.php ENDPATH**/ ?>

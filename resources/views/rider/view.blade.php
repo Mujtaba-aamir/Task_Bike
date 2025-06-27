@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bike Details</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rider Details</title>
+    <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(to right, #e0eafc, #cfdef3);
@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+    }            
 
     h1 {
         font-size: 2.5em;
@@ -46,6 +46,7 @@
         background-color: #222;
         padding: 1rem 2rem;
     }
+
 
     nav a {
         color: #fff;
@@ -88,11 +89,15 @@
             <a href="{{ route('rider.index') }}">View Registered Riders</a>
         </div>
     </nav>
-    <h1>Bike <span>#{{ $bike->id }} </span>Detail</h1>
-    <h3>Plate Number: {{ $bike->plate_number }}</h3>
-    <h3>Model: {{ $bike->model }}</h3>
-    <h3>Model Year: {{ $bike->model_year }}</h3>
-    <h3>Chassis Number: {{ $bike->chassis_number }}</h3>
-    <h3>Engine Number: {{ $bike->engine_number }}</h3>
+    <h1>Rider <span>#{{ $rider->id }} </span>Detail</h1>
+    <h3>Full Name: {{ $rider->full_name }}</h3>
+    <h3>Mobile Number: {{ $rider->mobile_number }}</h3>
+    <h3>Email: {{ $rider->email }}</h3>
+    <h3>Emirates ID Number: {{ $rider->emirates_id_number }}</h3>
+    <h3>Passport Number: {{ $rider->passport_number }}</h3>
+    <h3>Visa Expiry Date: {{ $rider->visa_expiry_date }}</h3>
+    <h3>Date of Birth: {{ $rider->date_of_birth }}</h3>
+    <h3>Status: {{ $rider->status }}</h3>
+
 </body>
 </html>
