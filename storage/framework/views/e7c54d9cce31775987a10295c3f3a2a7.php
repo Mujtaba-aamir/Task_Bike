@@ -23,14 +23,22 @@
  </form>
 
 <?php if(session('msg')): ?>
-  <script>alert("<?php echo e(session('msg')); ?>");</script>
+    <div class="custom-alert success">
+        <?php echo e(session('msg')); ?>
+
+    </div>
 <?php endif; ?>
 
- <?php if($errors->any()): ?>
-    <script>
-        alert(`<?php echo implode('\n', $errors->all()); ?>`);
-    </script>
+<?php if($errors->any()): ?>
+    <div class="custom-alert error">
+        <ul>
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+               <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </ul>
+    </div>
 <?php endif; ?>
+
 
 </body>
 </html><?php /**PATH C:\Laravel Code\Task\resources\views/Form.blade.php ENDPATH**/ ?>

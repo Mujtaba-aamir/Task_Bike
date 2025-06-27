@@ -100,22 +100,21 @@
   </style>
 </head>
 <body>
- <nav>
-  <div class="logo">RideSecure</div>
-  <div class="register-link">
-    <a href="/form">Register Your Bike</a>
-    <span class="view-link">
-      <a href="table">View Registered Bikes</a>
-    </span>
-  </div>
-</nav>
+  <nav>
+    <div class="logo">RideSecure</div>
+    <div class="register-link">
+      <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
+      <span class="view-link">
+        <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
+      </span>
+    </div>
+  </nav>
 
   <div class="hero">
-     <h1>Every Ride Deserves Recognition</h1>
+    <h1>Every Ride Deserves Recognition</h1>
     <p>Register your bike with ease and ensure its identity is protected—because every journey matters.</p>
-    <img src="https://images.unsplash.com/photo-1578721356725-b9002f477530?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fG1vdG90YmlrZXxlbnwwfHwwfHx8MA%3D%3D" alt="Bike Image" />
-   
+    <img src="https://images.unsplash.com/photo-1578721356725-b9002f477530?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fG1vdG90YmlrZXxlbnwwfHwwfHx8MA%3D%3D" alt="Bike Image"/>
   </div>
 </body>
 </html>
-<?php /**PATH C:\Laravel Code\Task\resources\views/Home.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Laravel Code\Task\resources\views/bike/home.blade.php ENDPATH**/ ?>

@@ -118,4 +118,4 @@
   </div>
 </body>
 </html>
-<?php /**PATH C:\Laravel Code\Task\resources\views/Home.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Laravel Code\Task\resources\views/bike/Home.blade.php ENDPATH**/ ?>

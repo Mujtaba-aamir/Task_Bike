@@ -66,27 +66,54 @@
       color: #555;
     }
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-    }
+       .view-link a {
+  color: #fff;
+  text-decoration: none;
+  background-color: #00cc99;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+
+.view-link a:hover {
+  background-color: #009977;
+}
+
+  @media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .register-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
   </style>
 </head>
 <body>
   <nav>
     <div class="logo">RideSecure</div>
-    <div class="register-link"><a href="/form">Register Your Bike</a></div>
+    <div class="register-link">
+      <a href="{{ route('bike.create') }}">Register Your Bike</a>
+      <span class="view-link">
+        <a href="{{ route('bike.index') }}">View Registered Bikes</a>
+      </span>
+    </div>
   </nav>
 
   <div class="hero">
-     <h1>Every Ride Deserves Recognition</h1>
+    <h1>Every Ride Deserves Recognition</h1>
     <p>Register your bike with ease and ensure its identity is protected—because every journey matters.</p>
-    <img src="https://images.unsplash.com/photo-1578721356725-b9002f477530?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fG1vdG90YmlrZXxlbnwwfHwwfHx8MA%3D%3D" alt="Bike Image" />
-   
+    <img src="https://images.unsplash.com/photo-1578721356725-b9002f477530?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fG1vdG90YmlrZXxlbnwwfHwwfHx8MA%3D%3D" alt="Bike Image"/>
   </div>
 </body>
 </html>
