@@ -217,8 +217,8 @@
             <select id="status" name="status" required>
                 <option value="">Select status</option>
                 <option value="Active" disabled>Active</option>
-                <option value="Inactive">Inactive</option>
-                <option value="Suspended">Suspended</option>
+                <option value="Inactive disabled">Inactive</option>
+                <option value="Suspended disabled">Suspended</option>
             </select>
 
             <button type="submit">Submit</button>

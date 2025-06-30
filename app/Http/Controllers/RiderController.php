@@ -79,7 +79,8 @@ class RiderController extends Controller
             'emirates_id_number' => $request->emirates_id_number,
             'passport_number' => $request->passport_number,
             'visa_expiry_date' => $request->visa_expiry_date,
-            'date_of_birth' => $request->date_of_birth
+            'date_of_birth' => $request->date_of_birth,
+            'status' => $request->status
         ]);
 
         if($updatedRider){
