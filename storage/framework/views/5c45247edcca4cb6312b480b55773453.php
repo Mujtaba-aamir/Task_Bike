@@ -9,6 +9,20 @@
     <title>Ride Secure</title>
 </head>
 <body>
+
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+            RideSecure
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="<?php echo e(route('bike.home')); ?>">Home</a>
+            <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
+            <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
+            <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
+            <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
+        </div>
+    </nav>
+
     <form action="<?php echo e(route('bike.store')); ?>" method="POST" enctype="multipart/form-data">
        <?php echo csrf_field(); ?>
         <input type="text" name="plate_number" placeholder="Plate Number" required>
@@ -19,7 +33,6 @@
         <label for="" style="color: white" >Mulkiya Front Image</label> <input type="file" name="mulkiya_front_image" required>
         <label for="" style="color: white" >Mulkiya Back Image</label><input type="file" name="mulkiya_back_image" required>
         <button type="submit">Register Bike</button>
-       
     </form>
 
     <?php if(session('msg')): ?>
@@ -38,7 +51,6 @@
            </ul>
         </div>
     <?php endif; ?>
-
 
 </body>
 </html><?php /**PATH C:\Laravel Code\Task\resources\views/bike/create.blade.php ENDPATH**/ ?>

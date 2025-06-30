@@ -12,6 +12,7 @@
         padding: 40px;
         font-family: 'Segoe UI', sans-serif;
         background: linear-gradient(to right, #e0eafc, #cfdef3);
+        padding-top: 80px;
       
     }
 
@@ -80,14 +81,13 @@
     }
 
     #delete a {
-    color: #e74c3c; /* red */
+    color: #e74c3c;
     }
 
     #update a {
-    color: #f1c40f; /* yellow */
+    color: #f1c40f;
     }
 
-  
     table a:hover {
         text-decoration: underline;
     }
@@ -126,12 +126,61 @@
         border-color: #0984e3;
         cursor: default;
     }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222;
+        padding: 1rem 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1rem;
+        position: relative;
+        transition: color 0.3s;
+    }
+
+    nav a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: #00cc99;
+        transition: width 0.3s;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+        width: 100%;
+    }
 </style>
 
 <body>
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+            RideSecure
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="{{ route('bike.home') }}">Home</a>
+            <a href="{{ route('bike.create') }}">Register Your Bike</a>
+            <a href="{{ route('bike.index') }}">View Registered Bikes</a>
+            <a href="{{ route('rider.create') }}">Register Rider</a>
+            <a href="{{ route('rider.index') }}">View Registered Riders</a>
+        </div>
+    </nav>
     <h1>Here's data of all the Registered Bikes</h1>
-    <button><a href="{{ route('bike.create') }}" id="btn">Register New Bike</a></button>
-
+    
     <table class="container">
         <tr>
             <th>ID</th>
@@ -159,10 +208,9 @@
         @endforeach  
     </table>
 
-@if(session('error'))
-    <script>alert('{{ session('error') }}');</script>
-@endif
+    @if(session('error'))
+        <script>alert('{{ session('error') }}');</script>
+    @endif
 
- 
 </body>
 </html>

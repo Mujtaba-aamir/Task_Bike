@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+     <nav>
+  <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+    RideSecure
+  </div>
+  <div style="display: flex; justify-content: center; gap: 2rem;">
+    <a href="<?php echo e(route('bike.home')); ?>">Home</a>
+    <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
+    <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
+    <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
+    <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
+  </div>
+</nav>
     <div class="main_container">
         <form action="<?php echo e(route('bike.update', $bike->id)); ?>" method="POST" enctype="multipart/form-data">
         <?php echo csrf_field(); ?>
