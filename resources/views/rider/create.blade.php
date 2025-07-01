@@ -169,6 +169,7 @@
             <a href="{{ route('bike.index') }}">View Registered Bikes</a>
             <a href="{{ route('rider.create') }}">Register Rider</a>
             <a href="{{ route('rider.index') }}">View Registered Riders</a>
+            <a href="{{ route('assignment.create') }}">Bike Assignment</a>
         </div>
     </nav>
 
@@ -216,7 +217,7 @@
             <label for="status">Status</label>
             <select id="status" name="status" required>
                 <option value="">Select status</option>
-                <option value="Active" disabled>Active</option>
+                <option value="Active">Active</option>
                 <option value="Inactive disabled">Inactive</option>
                 <option value="Suspended disabled">Suspended</option>
             </select>
