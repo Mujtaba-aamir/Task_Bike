@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rider;
+use App\Models\Bike;
 
 
 class RiderController extends Controller
@@ -89,5 +90,9 @@ class RiderController extends Controller
         return redirect()->back()->with('msg', 'Rider Updation Unsuccessful');
     }
 
-
+    public function createAssign()
+    {
+       $rider = Rider::with('bike')->find(2);
+       return $rider;
+    }
 }

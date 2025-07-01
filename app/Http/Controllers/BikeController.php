@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bike;
+use App\Models\Rider;
+
 
 class BikeController extends Controller
 {
@@ -89,5 +91,5 @@ class BikeController extends Controller
            return redirect()->back()->with('msg', 'Bike Updated Successfully');
         }
         return redirect()->back()->with('msg', 'Bike Updation Unsuccessful');
-    }
+    }    
 }

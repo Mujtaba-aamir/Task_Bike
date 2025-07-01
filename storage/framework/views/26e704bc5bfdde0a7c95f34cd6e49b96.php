@@ -169,6 +169,7 @@
             <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
             <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
             <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
+            <a href="<?php echo e(route('assignment.create')); ?>">Bike Assignment</a>
         </div>
     </nav>
 
@@ -194,32 +195,32 @@
         <form method="POST" action="<?php echo e(route('rider.store')); ?>">
             <?php echo csrf_field(); ?>
             <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="full_name" required>
+            <input type="text" id="fullname" name="full_name" value="<?php echo e(old('full_name')); ?>" required>
     
             <label for="mobile_number">Mobile Number</label>
-            <input type="text" id="mobile_number" name="mobile_number" placeholder="+9715XXXXXXXX" required>
+            <input type="text" id="mobile_number" value="<?php echo e(old('mobile_number')); ?>" name="mobile_number" placeholder="+9715XXXXXXXX" required>
     
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" value="<?php echo e(old('email')); ?>" name="email" required>
     
             <label for="emirates_id_number">Emirates ID Number</label>
-            <input type="text" id="emirates_id_number" name="emirates_id_number" required>
+            <input type="text" id="emirates_id_number" value="<?php echo e(old('emirates_id_number')); ?>" name="emirates_id_number" required>
     
             <label for="passport_number">Passport Number</label>
-            <input type="text" id="passport_number" name="passport_number" required>
+            <input type="text" id="passport_number" value="<?php echo e(old('passport_number')); ?>" name="passport_number" required>
     
             <label for="visa_expiry_date">Visa Expiry Date</label>
-            <input type="date" id="visa_expiry_date" name="visa_expiry_date" required>
+            <input type="date" id="visa_expiry_date" value="<?php echo e(old('visa_expiry_date')); ?>" name="visa_expiry_date" required>
     
             <label for="date_of_birth">Date of Birth</label>
-            <input type="date" id="date_of_birth" name="date_of_birth" required>
+            <input type="date" id="date_of_birth" value="<?php echo e(old('date_of_birth')); ?>" name="date_of_birth" required>
 
             <label for="status">Status</label>
             <select id="status" name="status" required>
                 <option value="">Select status</option>
                 <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
-                <option value="Suspended">Suspended</option>
+                <option value="Inactive disabled">Inactive</option>
+                <option value="Suspended disabled">Suspended</option>
             </select>
 
             <button type="submit">Submit</button>
