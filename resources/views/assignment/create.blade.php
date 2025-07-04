@@ -129,6 +129,25 @@
             margin: 0;
             padding-left: 20px;
         }
+
+    input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        color: #333;
+        background-color: #fff;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type="date"]:focus {
+        outline: none;
+        border-color: #00cc99;
+        box-shadow: 0 0 0 2px rgba(0, 204, 153, 0.2);
+    }
+
     </style>
 </head>
 <body>
@@ -188,15 +207,26 @@
                     @endforeach
                 </select>
 
+                <label for="rider_id">Select Date:</label>
+                <input type="date" name="date" id="">
+
                 <button type="submit">Assign</button>
             </form>
 
-            <div style="margin-top: 20px; text-align: center;">
-                <a href="{{ route('assignment.index') }}" 
-                   style="display: inline-block; padding: 10px 20px; background-color: #00cc99; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
-                   View Assigned Bikes
-                </a>
-            </div>
+           <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+    <a href="{{ route('assignment.index') }}" 
+       style="padding: 10px 20px; background-color: #00cc99; color: white; text-decoration: none;
+              border-radius: 6px; font-weight: bold; font-size: 14px;">
+        View Assigned Bikes
+    </a>
+
+    <a href="{{ route('assignment.unassigned') }}" 
+       style="padding: 10px 20px; background-color: #ea1414; color: white; text-decoration: none;
+              border-radius: 6px; font-weight: bold; font-size: 14px;">
+        View Unassigned Bikes
+    </a>
+</div>
+
         </div>
     </div>
 </body>

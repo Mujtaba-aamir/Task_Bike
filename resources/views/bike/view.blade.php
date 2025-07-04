@@ -95,5 +95,15 @@
     <h3>Model Year: {{ $bike->model_year }}</h3>
     <h3>Chassis Number: {{ $bike->chassis_number }}</h3>
     <h3>Engine Number: {{ $bike->engine_number }}</h3>
+    @php
+    $assignedRider = $bike->riders->first();
+@endphp
+
+@if($assignedRider)
+    <h3>Assigned Rider: {{ $assignedRider->full_name }}</h3>
+@else
+    <h3>Assigned Rider: <span style="color: #777;">Not Assigned</span></h3>
+@endif
+
 </body>
 </html>

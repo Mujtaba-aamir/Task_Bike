@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('bike_id')->references('id')->on('bikes')->cascadeOnDelete();
             $table->foreignId('rider_id')->references('id')->on('riders')->cascadeOnDelete();
-            $table->timestamp('assigned_at');
+            $table->date('assigned_at');
             $table->timestamps();
         });
     }

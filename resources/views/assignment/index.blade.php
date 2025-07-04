@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Assignment Details</title>
+  <title>Assigned Bikes</title>
   <style>
     * {
         margin: 0;
@@ -53,6 +53,13 @@
     nav a:hover::after,
     nav a:focus::after {
         width: 100%;
+    }
+
+    h2.heading {
+        text-align: center;
+        font-size: 1.8rem;
+        color: #444;
+        margin-top: 30px;
     }
 
     table {
@@ -110,30 +117,6 @@
         text-decoration: underline;
     }
 
-    .hero {
-        text-align: center;
-        padding: 2rem;
-        margin-top: 2rem;
-    }
-
-    .hero img {
-        max-width: 90%;
-        height: auto;
-        padding-top: 20px;
-    }
-
-    .hero h1 {
-        margin-top: 2rem;
-        font-size: 2.2rem;
-        color: #333;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        margin-top: 1rem;
-        color: #555;
-    }
-
     .custom-alert {
         width: 350px;
         margin: 100px auto 15px auto; 
@@ -148,60 +131,67 @@
     .custom-alert.success {
         background-color: #00cc99; 
     }
-    
+
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
+        h2.heading {
+            font-size: 1.4rem;
+        }
+
+        table th, table td {
+            font-size: 0.9rem;
+            padding: 10px;
+        }
     }
   </style>
 </head>
 <body>
-    <nav>
-        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
-            RideSecure
+  <nav>
+    <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+        RideSecure
+    </div>
+    <div style="display: flex; justify-content: center; gap: 2rem;">
+        <a href="{{ route('bike.home') }}">Home</a>
+        <a href="{{ route('bike.create') }}">Register Your Bike</a>
+        <a href="{{ route('bike.index') }}">View Registered Bikes</a>
+        <a href="{{ route('rider.create') }}">Register Rider</a>
+        <a href="{{ route('rider.index') }}">View Registered Riders</a>
+        <a href="{{ route('assignment.create') }}">Bike Assignment</a>
+    </div>
+  </nav>
+
+  <div style="margin-top: 30px;">
+    @if (session('msg'))
+        <div class="custom-alert success">
+            {{ session('msg') }}
         </div>
-        <div style="display: flex; justify-content: center; gap: 2rem;">
-            <a href="{{ route('bike.home') }}">Home</a>
-            <a href="{{ route('bike.create') }}">Register Your Bike</a>
-            <a href="{{ route('bike.index') }}">View Registered Bikes</a>
-            <a href="{{ route('rider.create') }}">Register Rider</a>
-            <a href="{{ route('rider.index') }}">View Registered Riders</a>
-            <a href="{{ route('assignment.create') }}">Bike Assignment</a>
-        </div>
-    </nav>
-    <div style="margin-top: 30px;">
-        @if (session('msg'))
-            <div class="custom-alert success">
-                {{ session('msg') }}
-            </div>
-        @endif
-    <table>
-        <tr>
-            <th>Bike Plate Number</th>
-            <th>Rider Name</th>
-            <th>Assigned At</th>
-            <th>Actions</th>
-        </tr>
-        @foreach($assignments as $bike)
+    @endif
+  </div>
+
+  <h2 class="heading">Assigned Bikes</h2>
+
+  <table>
+    <tr>
+        <th>Bike Plate Number</th>
+        <th>Rider Name</th>
+        <th>Assigned At</th>
+        <th>Actions</th>
+    </tr>
+    @foreach($assignments as $bike)
         @foreach($bike->riders as $rider)
         <tr>
             <td>{{ $bike->plate_number }}</td>
             <td>{{ $rider->full_name }}</td>
             <td>{{ $rider->pivot->assigned_at }}</td>
             <td>
-            <form action="{{ route('assignment.unassign', [$bike->id, $rider->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to unassign this rider?')">
-               @csrf
-               <button type="submit">Unassign</button>
-            </form>
-            <a href="{{ route('assignment.edit', [$bike->id, $rider->id]) }}">Update</a>
+                <form action="{{ route('assignment.unassign', [$bike->id, $rider->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to unassign this rider?')">
+                    @csrf
+                    <button type="submit">Unassign</button>
+                </form>
+                <a href="{{ route('assignment.edit', [$bike->id, $rider->id]) }}">Update</a>
             </td>
         </tr>
         @endforeach
-        @endforeach
-    </table>
+    @endforeach
+  </table>
 </body>
 </html>

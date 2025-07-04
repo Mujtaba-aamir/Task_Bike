@@ -128,6 +128,23 @@
     button:hover {
       background-color: #076bb0;
     }
+      input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        color: #333;
+        background-color: #fff;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type="date"]:focus {
+        outline: none;
+        border-color: #00cc99;
+        box-shadow: 0 0 0 2px rgba(0, 204, 153, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -185,6 +202,10 @@
                         </option>
                     @endforeach
                 </select>
+
+                <label for="rider_id">Select Date:</label>
+                <input type="date" name="date"
+                value="{{ \Carbon\Carbon::parse($currentRider->pivot->assigned_at)->format('Y-m-d') }}">
 
                <button type="submit">Update Assignment</button>
             </form>
