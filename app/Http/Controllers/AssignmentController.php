@@ -31,7 +31,7 @@ class AssignmentController extends Controller
 
         $bike = Bike::findOrFail($request->bike_id);
 
-        // Make sure the bike isn't already assigned
+       
         if ($bike->riders()->wherePivot('status', 'assigned')->exists()) {
             return back()->with('msg', 'This bike is already assigned.');
         }
@@ -80,7 +80,7 @@ class AssignmentController extends Controller
 
     $currentBike = Bike::findOrFail($bike_id);
 
-    // 👇 This line loads the rider via relationship with pivot data
+   
     $currentRider = $currentBike->riders()->where('riders.id', $rider_id)->first();
 
     return view('assignment.edit', compact('bikes', 'riders', 'currentBike', 'currentRider'));
@@ -101,7 +101,7 @@ class AssignmentController extends Controller
             'status' => 'unassigned'
         ]);
 
-        // Assign new relationship
+        
         $newBike = Bike::findOrFail($request->bike_id);
         $newBike->riders()->attach($request->rider_id, [
             'assigned_at' => $request->date,
