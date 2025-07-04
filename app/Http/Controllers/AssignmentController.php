@@ -109,14 +109,14 @@ class AssignmentController extends Controller
 
     public function unassignedIndex()
     {
-    $unassigned = Bike::whereHas('riders', function ($query) {
-        $query->where('bike_rider.status', 'unassigned');
-    })->with(['riders' => function ($query) {
-        $query->wherePivot('status', 'unassigned')
-              ->withPivot('assigned_at', 'unassigned_at'); // 🆕 Include here
-    }])->get();
-
-    return view('assignment.unassigned', compact('unassigned'));
+        $unassigned = Bike::whereHas('riders', function ($query) {
+            $query->where('bike_rider.status', 'unassigned');
+            })->with(['riders' => function ($query) {
+            $query->wherePivot('status', 'unassigned')
+            ->withPivot('assigned_at', 'unassigned_at');
+            }])->get();
+    
+        return view('assignment.unassigned', compact('unassigned'));
     }
 
 }
