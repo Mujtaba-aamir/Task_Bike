@@ -31,7 +31,6 @@ class AssignmentController extends Controller
 
         $bike = Bike::findOrFail($request->bike_id);
 
-       
         if ($bike->riders()->wherePivot('status', 'assigned')->exists()) {
             return back()->with('msg', 'This bike is already assigned.');
         }
@@ -80,7 +79,6 @@ class AssignmentController extends Controller
 
     $currentBike = Bike::findOrFail($bike_id);
 
-   
     $currentRider = $currentBike->riders()->where('riders.id', $rider_id)->first();
 
     return view('assignment.edit', compact('bikes', 'riders', 'currentBike', 'currentRider'));
@@ -95,13 +93,11 @@ class AssignmentController extends Controller
             'date'    => 'required|date|after:today'
         ]);
 
-        // Unassign old assignment (mark as unassigned)
         $oldBike = Bike::findOrFail($bike_id);
         $oldBike->riders()->updateExistingPivot($rider_id, [
             'status' => 'unassigned'
         ]);
 
-        
         $newBike = Bike::findOrFail($request->bike_id);
         $newBike->riders()->attach($request->rider_id, [
             'assigned_at' => $request->date,
@@ -124,5 +120,3 @@ class AssignmentController extends Controller
     }
 
 }
-
-
