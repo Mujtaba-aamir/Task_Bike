@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Rider Details</title>
     <style>
-   body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #e0eafc, #cfdef3);
-  color: #333;
-  margin: 0;
-  padding: 100px 40px 40px; /* Top padding added here */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #e0eafc, #cfdef3);
+        color: #333;
+        margin: 0;
+        padding: 100px 40px 40px; /* Top padding added here */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }            
 
     h1 {
         font-size: 2.5em;
@@ -35,60 +34,62 @@
         border-radius: 4px;
     }
 
-      nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222;
-  padding: 1rem 2rem;
-}
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222;
+        padding: 1rem 2rem;
+    }
 
 
     nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1rem;
-      position: relative;
-      transition: color 0.3s;
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1rem;
+        position: relative;
+        transition: color 0.3s;
     }
 
     nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background-color: #00cc99;
-      transition: width 0.3s;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: #00cc99;
+        transition: width 0.3s;
     }
 
     nav a:hover::after,
     nav a:focus::after {
-      width: 100%;
+        width: 100%;
     }
+
 </style>
 
 </head>
 <body>
-     <nav>
-  <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
-    RideSecure
-  </div>
-  <div style="display: flex; justify-content: center; gap: 2rem;">
-    <a href="<?php echo e(route('bike.home')); ?>">Home</a>
-    <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
-    <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
-    <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
-    <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
-  </div>
-</nav>
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+            RideSecure
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="<?php echo e(route('bike.home')); ?>">Home</a>
+            <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
+            <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
+            <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
+            <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
+            <a href="<?php echo e(route('assignment.create')); ?>">Bike Assignment</a>
+        </div>
+    </nav>
     <h1>Rider <span>#<?php echo e($rider->id); ?> </span>Detail</h1>
     <h3>Full Name: <?php echo e($rider->full_name); ?></h3>
     <h3>Mobile Number: <?php echo e($rider->mobile_number); ?></h3>
@@ -98,6 +99,38 @@
     <h3>Visa Expiry Date: <?php echo e($rider->visa_expiry_date); ?></h3>
     <h3>Date of Birth: <?php echo e($rider->date_of_birth); ?></h3>
     <h3>Status: <?php echo e($rider->status); ?></h3>
+    <?php if($rider->bikes->count()): ?>
+    <h2 style="margin-top: 30px; font-size: 1.5rem;">Assigned Bikes History</h2>
+    <table style="width: 90%; max-width: 600px; margin-top: 15px; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #0984e3; color: white;">
+                <th style="padding: 10px;">Plate Number</th>
+                <th style="padding: 10px;">Assigned At</th>
+                <th style="padding: 10px;">Unassigned At</th>
+                <th style="padding: 10px;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $__currentLoopData = $rider->bikes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bike): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <tr style="background-color: #f9f9f9; text-align: center;">
+                    <td style="padding: 10px;"><?php echo e($bike->plate_number); ?></td>
+                    <td style="padding: 10px;"><?php echo e($bike->pivot->assigned_at); ?></td>
+                    <td style="padding: 10px;">
+                        <?php echo e($bike->pivot->unassigned_at ? \Carbon\Carbon::parse($bike->pivot->unassigned_at)->format('Y-m-d') : '-'); ?>
+
+                    </td>
+                    <td style="padding: 10px; color: <?php echo e($bike->pivot->status === 'assigned' ? 'green' : 'gray'); ?>;">
+                        <?php echo e(ucfirst($bike->pivot->status)); ?>
+
+                    </td>
+                </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <h3 style="margin-top: 30px;">No bike has been assigned to this rider yet.</h3>
+<?php endif; ?>
+
 
 </body>
 </html><?php /**PATH C:\Laravel Code\Task\resources\views/rider/view.blade.php ENDPATH**/ ?>

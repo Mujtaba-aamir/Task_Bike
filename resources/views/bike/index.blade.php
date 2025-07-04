@@ -177,6 +177,7 @@
             <a href="{{ route('bike.index') }}">View Registered Bikes</a>
             <a href="{{ route('rider.create') }}">Register Rider</a>
             <a href="{{ route('rider.index') }}">View Registered Riders</a>
+            <a href="{{ route('assignment.create') }}">Bike Assignment</a>
         </div>
     </nav>
     <h1>Here's data of all the Registered Bikes</h1>

@@ -87,6 +87,7 @@
             <a href="{{ route('bike.index') }}">View Registered Bikes</a>
             <a href="{{ route('rider.create') }}">Register Rider</a>
             <a href="{{ route('rider.index') }}">View Registered Riders</a>
+            <a href="{{ route('assignment.create') }}">Bike Assignment</a>
         </div>
     </nav>
     <h1>Rider <span>#{{ $rider->id }} </span>Detail</h1>
@@ -98,6 +99,36 @@
     <h3>Visa Expiry Date: {{ $rider->visa_expiry_date }}</h3>
     <h3>Date of Birth: {{ $rider->date_of_birth }}</h3>
     <h3>Status: {{ $rider->status }}</h3>
+    @if($rider->bikes->count())
+    <h2 style="margin-top: 30px; font-size: 1.5rem;">Assigned Bikes History</h2>
+    <table style="width: 90%; max-width: 600px; margin-top: 15px; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #0984e3; color: white;">
+                <th style="padding: 10px;">Plate Number</th>
+                <th style="padding: 10px;">Assigned At</th>
+                <th style="padding: 10px;">Unassigned At</th>
+                <th style="padding: 10px;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($rider->bikes as $bike)
+                <tr style="background-color: #f9f9f9; text-align: center;">
+                    <td style="padding: 10px;">{{ $bike->plate_number }}</td>
+                    <td style="padding: 10px;">{{ $bike->pivot->assigned_at }}</td>
+                    <td style="padding: 10px;">
+                        {{ $bike->pivot->unassigned_at ? \Carbon\Carbon::parse($bike->pivot->unassigned_at)->format('Y-m-d') : '-' }}
+                    </td>
+                    <td style="padding: 10px; color: {{ $bike->pivot->status === 'assigned' ? 'green' : 'gray' }};">
+                        {{ ucfirst($bike->pivot->status) }}
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@else
+    <h3 style="margin-top: 30px;">No bike has been assigned to this rider yet.</h3>
+@endif
+
 
 </body>
 </html>

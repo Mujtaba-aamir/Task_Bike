@@ -18,5 +18,11 @@ class Rider extends Model
     'visa_expiry_date',
     'date_of_birth',
     'status',
-];
+    ];
+
+    public function bikes()
+    {  
+        return $this->belongsToMany(Bike::class)->withTimestamps()->withPivot(['assigned_at', 'unassigned_at']);
+    }
+
 }

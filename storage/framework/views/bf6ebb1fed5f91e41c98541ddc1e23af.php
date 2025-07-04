@@ -94,6 +94,7 @@
             <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
             <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
             <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
+            <a href="<?php echo e(route('assignment.create')); ?>">Bike Assignment</a>
         </div>
     </nav>
 
