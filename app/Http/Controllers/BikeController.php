@@ -51,14 +51,14 @@ class BikeController extends Controller
         return view('bike.index', compact('bikes'));
     }
 
-       public function viewBike($id)
-{
-    $bike = Bike::with(['riders' => function ($query) {
+    public function viewBike($id)
+    {
+        $bike = Bike::with(['riders' => function ($query) {
         $query->where('bike_rider.status', 'assigned');
-    }])->findOrFail($id);
+        }])->findOrFail($id);
 
-    return view('bike.view', compact('bike'));
-}
+        return view('bike.view', compact('bike'));
+    }
 
 
     public function deleteBike(string $id)

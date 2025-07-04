@@ -101,7 +101,6 @@
     <h3>Status: {{ $rider->status }}</h3>
     @if($rider->bikes->count())
     <h2 style="margin-top: 30px; font-size: 1.5rem;">Assigned Bikes History</h2>
-
     <table style="width: 90%; max-width: 600px; margin-top: 15px; border-collapse: collapse;">
         <thead>
             <tr style="background-color: #0984e3; color: white;">

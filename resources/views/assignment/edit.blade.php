@@ -206,7 +206,6 @@
                 <label for="rider_id">Select Date:</label>
                 <input type="date" name="date"
                 value="{{ \Carbon\Carbon::parse($currentRider->pivot->assigned_at)->format('Y-m-d') }}">
-
                <button type="submit">Update Assignment</button>
             </form>
         </div>

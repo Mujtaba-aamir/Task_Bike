@@ -17,32 +17,32 @@ class RiderController extends Controller
     public function storeRider(Request $request)
     {
         $rider = $request->validate([
-    'full_name' => 'required',
-    'mobile_number' => 'required|regex:/^\+9715[0-9]{8}$/',
-    'email' => 'required',
-    'emirates_id_number' => 'required|unique:riders,emirates_id_number|digits:15',
-    'passport_number' => 'required|unique:riders,passport_number',
-    'visa_expiry_date' => 'required|date|after:today',
-    'date_of_birth' => 'required|date|before:today',
-    'status' => 'required|in:active,inactive' // ✅ Add this
-]);
+        'full_name' => 'required',
+        'mobile_number' => 'required|regex:/^\+9715[0-9]{8}$/',
+        'email' => 'required',
+        'emirates_id_number' => 'required|unique:riders,emirates_id_number|digits:15',
+        'passport_number' => 'required|unique:riders,passport_number',
+        'visa_expiry_date' => 'required|date|after:today',
+        'date_of_birth' => 'required|date|before:today',
+        'status' => 'required|in:active,inactive' // ✅ Add this
+    ]);
+    
+    $createdRider = Rider::create([
+        'full_name' => $rider['full_name'],
+        'mobile_number' => $rider['mobile_number'],
+        'email' => $rider['email'],
+        'emirates_id_number' => $rider['emirates_id_number'],
+        'passport_number' => $rider['passport_number'],
+        'visa_expiry_date' => $rider['visa_expiry_date'],
+        'date_of_birth' => $rider['date_of_birth'],
+        'status' => $rider['status'] // ✅ Save it
+    ]);
 
-$createdRider = Rider::create([
-    'full_name' => $rider['full_name'],
-    'mobile_number' => $rider['mobile_number'],
-    'email' => $rider['email'],
-    'emirates_id_number' => $rider['emirates_id_number'],
-    'passport_number' => $rider['passport_number'],
-    'visa_expiry_date' => $rider['visa_expiry_date'],
-    'date_of_birth' => $rider['date_of_birth'],
-    'status' => $rider['status'] // ✅ Save it
-]);
 
-
-        if($createdRider){
-            return redirect()->route('rider.create')->with('msg', 'Rider Registered Successfully');
-        }         
-        return redirect()->route('rider.create')->with('msg', 'Rider Registration Unsuccessful');
+    if($createdRider){
+        return redirect()->route('rider.create')->with('msg', 'Rider Registered Successfully');
+    }         
+    return redirect()->route('rider.create')->with('msg', 'Rider Registration Unsuccessful');
     }
 
     public function indexRider()
@@ -52,13 +52,13 @@ $createdRider = Rider::create([
     }
 
     public function viewRider($id)
-{
-    $rider = Rider::with(['bikes' => function ($query) {
-        $query->withPivot('assigned_at', 'unassigned_at', 'status');
-    }])->findOrFail($id);
-
-    return view('rider.view', compact('rider'));
-}
+    {
+        $rider = Rider::with(['bikes' => function ($query) {
+            $query->withPivot('assigned_at', 'unassigned_at', 'status');
+        }])->findOrFail($id);
+    
+        return view('rider.view', compact('rider'));
+    }
 
 
     public function deleteRider(string $id)

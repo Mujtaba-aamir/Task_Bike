@@ -10,7 +10,6 @@ class AssignmentController extends Controller
 {
     public function create()
     {
-        // Only bikes and riders with no active assignment
         $bikes = Bike::whereDoesntHave('riders', function ($query) {
             $query->where('bike_rider.status', 'assigned');
         })->get();

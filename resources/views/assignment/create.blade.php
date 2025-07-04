@@ -214,18 +214,18 @@
             </form>
 
            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="{{ route('assignment.index') }}" 
-       style="padding: 10px 20px; background-color: #00cc99; color: white; text-decoration: none;
-              border-radius: 6px; font-weight: bold; font-size: 14px;">
-        View Assigned Bikes
-    </a>
+                <a href="{{ route('assignment.index') }}" 
+                style="padding: 10px 20px; background-color: #00cc99; color: white; text-decoration: none;
+                border-radius: 6px; font-weight: bold; font-size: 14px;">
+                View Assigned Bikes
+                </a>
 
-    <a href="{{ route('assignment.unassigned') }}" 
-       style="padding: 10px 20px; background-color: #ea1414; color: white; text-decoration: none;
-              border-radius: 6px; font-weight: bold; font-size: 14px;">
-        View Unassigned Bikes
-    </a>
-</div>
+                <a href="{{ route('assignment.unassigned') }}" 
+                style="padding: 10px 20px; background-color: #ea1414; color: white; text-decoration: none;
+                border-radius: 6px; font-weight: bold; font-size: 14px;">
+                View Unassigned Bikes
+                </a>
+            </div>
 
         </div>
     </div>
