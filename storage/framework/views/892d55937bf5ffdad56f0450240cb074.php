@@ -121,49 +121,59 @@
   </style>
 </head>
 <body>
-  <nav>
-    <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
         RideSecure
-    </div>
-    <div style="display: flex; justify-content: center; gap: 2rem;">
-        <a href="<?php echo e(route('bike.home')); ?>">Home</a>
-        <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
-        <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
-        <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
-        <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
-        <a href="<?php echo e(route('assignment.create')); ?>">Bike Assignment</a>
-    </div>
-  </nav>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="<?php echo e(route('bike.home')); ?>">Home</a>
+            <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
+            <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
+            <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
+            <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
+            <a href="<?php echo e(route('assignment.create')); ?>">Bike Assignment</a>
+        </div>
+    </nav> 
 
-  <div style="margin-top: 30px;">
-    <?php if(session('msg')): ?>
-      <div class="custom-alert success">
-        <?php echo e(session('msg')); ?>
+        <div style="margin-top: 30px;">
+            <?php if(session('msg')): ?>
+                <div class="custom-alert success">
+                    <?php echo e(session('msg')); ?>
 
-      </div>
-    <?php endif; ?>
-  </div>
+                </div>
+            <?php endif; ?>
+        </div>
 
-  <h2 class="heading">Unassigned Bikes</h2>
+    <h2 class="heading">Unassigned Bikes</h2>
 
-  <table>
-    <tr>
-      <th>Bike Plate Number</th>
-      <th>Rider Name</th>
-      <th>Assigned At</th>
-      <th>Unassigned At</th>
-    </tr>
-    <?php $__currentLoopData = $unassigned; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bike): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-      <?php $__currentLoopData = $bike->riders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <table>
         <tr>
-          <td><?php echo e($bike->plate_number); ?></td>
-          <td><?php echo e($rider->full_name); ?></td>
-          <td><?php echo e($rider->pivot->assigned_at); ?></td>
-          <td><?php echo e(\Carbon\Carbon::parse($rider->pivot->unassigned_at)->format('Y-m-d')); ?></td>
+            <th>Bike Plate Number</th>
+            <th>Rider Name</th>
+            <th>Assigned At</th>
+            <th>Unassigned At</th>
+            <th>Delete Record</th>
         </tr>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-  </table>
+        <?php $__currentLoopData = $unassigned; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bike): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $bike->riders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <tr>
+            <td><?php echo e($bike->plate_number); ?></td>
+            <td><?php echo e($rider->full_name); ?></td>
+            <td><?php echo e($rider->pivot->assigned_at); ?></td>
+            <td><?php echo e(\Carbon\Carbon::parse($rider->pivot->unassigned_at)->format('Y-m-d')); ?></td>
+            <td>
+                <form action="<?php echo e(route('assignment.delete', [$bike->id, $rider->id, $rider->pivot->assigned_at])); ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('DELETE'); ?>
+                    <button type="submit" style="background-color:#d63031;color:white;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;">Delete</button>
+                </form>
+
+            </td>
+        </tr>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+    </table>
+
 </body>
 </html>
 <?php /**PATH C:\Laravel Code\Task\resources\views/assignment/unassigned.blade.php ENDPATH**/ ?>

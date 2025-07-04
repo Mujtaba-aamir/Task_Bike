@@ -22,7 +22,7 @@ class Rider extends Model
 
     public function bikes()
     {  
-        return $this->belongsToMany(Bike::class)->withTimestamps()->withPivot('assigned_at');
+        return $this->belongsToMany(Bike::class)->withTimestamps()->withPivot(['assigned_at', 'unassigned_at']);
     }
 
 }

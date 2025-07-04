@@ -97,13 +97,13 @@
     <h3>Engine Number: <?php echo e($bike->engine_number); ?></h3>
     <?php
     $assignedRider = $bike->riders->first();
-?>
-
-<?php if($assignedRider): ?>
-    <h3>Assigned Rider: <?php echo e($assignedRider->full_name); ?></h3>
-<?php else: ?>
-    <h3>Assigned Rider: <span style="color: #777;">Not Assigned</span></h3>
-<?php endif; ?>
+    ?>
+    
+    <?php if($assignedRider): ?>
+        <h3>Assigned Rider: <?php echo e($assignedRider->full_name); ?></h3>
+    <?php else: ?>
+        <h3>Assigned Rider: <span style="color: #777;">Not Assigned</span></h3>
+    <?php endif; ?>
 
 </body>
 </html><?php /**PATH C:\Laravel Code\Task\resources\views/bike/view.blade.php ENDPATH**/ ?>

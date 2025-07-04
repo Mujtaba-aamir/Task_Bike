@@ -101,7 +101,6 @@
     <h3>Status: <?php echo e($rider->status); ?></h3>
     <?php if($rider->bikes->count()): ?>
     <h2 style="margin-top: 30px; font-size: 1.5rem;">Assigned Bikes History</h2>
-
     <table style="width: 90%; max-width: 600px; margin-top: 15px; border-collapse: collapse;">
         <thead>
             <tr style="background-color: #0984e3; color: white;">

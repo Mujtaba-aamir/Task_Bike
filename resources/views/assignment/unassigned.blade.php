@@ -121,47 +121,57 @@
   </style>
 </head>
 <body>
-  <nav>
-    <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
         RideSecure
-    </div>
-    <div style="display: flex; justify-content: center; gap: 2rem;">
-        <a href="{{ route('bike.home') }}">Home</a>
-        <a href="{{ route('bike.create') }}">Register Your Bike</a>
-        <a href="{{ route('bike.index') }}">View Registered Bikes</a>
-        <a href="{{ route('rider.create') }}">Register Rider</a>
-        <a href="{{ route('rider.index') }}">View Registered Riders</a>
-        <a href="{{ route('assignment.create') }}">Bike Assignment</a>
-    </div>
-  </nav>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="{{ route('bike.home') }}">Home</a>
+            <a href="{{ route('bike.create') }}">Register Your Bike</a>
+            <a href="{{ route('bike.index') }}">View Registered Bikes</a>
+            <a href="{{ route('rider.create') }}">Register Rider</a>
+            <a href="{{ route('rider.index') }}">View Registered Riders</a>
+            <a href="{{ route('assignment.create') }}">Bike Assignment</a>
+        </div>
+    </nav> 
 
-  <div style="margin-top: 30px;">
-    @if (session('msg'))
-      <div class="custom-alert success">
-        {{ session('msg') }}
-      </div>
-    @endif
-  </div>
+        <div style="margin-top: 30px;">
+            @if (session('msg'))
+                <div class="custom-alert success">
+                    {{ session('msg') }}
+                </div>
+            @endif
+        </div>
 
-  <h2 class="heading">Unassigned Bikes</h2>
+    <h2 class="heading">Unassigned Bikes</h2>
 
-  <table>
-    <tr>
-      <th>Bike Plate Number</th>
-      <th>Rider Name</th>
-      <th>Assigned At</th>
-      <th>Unassigned At</th>
-    </tr>
-    @foreach ($unassigned as $bike)
-      @foreach ($bike->riders as $rider)
+    <table>
         <tr>
-          <td>{{ $bike->plate_number }}</td>
-          <td>{{ $rider->full_name }}</td>
-          <td>{{ $rider->pivot->assigned_at }}</td>
-          <td>{{ \Carbon\Carbon::parse($rider->pivot->unassigned_at)->format('Y-m-d') }}</td>
+            <th>Bike Plate Number</th>
+            <th>Rider Name</th>
+            <th>Assigned At</th>
+            <th>Unassigned At</th>
+            <th>Delete Record</th>
         </tr>
-      @endforeach
-    @endforeach
-  </table>
+        @foreach ($unassigned as $bike)
+        @foreach ($bike->riders as $rider)
+        <tr>
+            <td>{{ $bike->plate_number }}</td>
+            <td>{{ $rider->full_name }}</td>
+            <td>{{ $rider->pivot->assigned_at }}</td>
+            <td>{{ \Carbon\Carbon::parse($rider->pivot->unassigned_at)->format('Y-m-d') }}</td>
+            <td>
+                <form action="{{ route('assignment.delete', [$bike->id, $rider->id, $rider->pivot->assigned_at]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" style="background-color:#d63031;color:white;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;">Delete</button>
+                </form>
+
+            </td>
+        </tr>
+        @endforeach
+        @endforeach  
+    </table>
+
 </body>
 </html>

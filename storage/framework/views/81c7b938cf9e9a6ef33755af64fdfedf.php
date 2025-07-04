@@ -208,25 +208,29 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
 
-                <label for="rider_id">Select Date:</label>
-                <input type="date" name="date" id="">
+                <label for="rider_id">Select Assigned Date:</label>
+                <input type="date" name="assigned_at" id="">
+           
+                <label for="rider_id">Select Unassigned Date:</label>
+                <input type="date" name="unassigned_at" id="">
+                
 
                 <button type="submit">Assign</button>
             </form>
 
            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="<?php echo e(route('assignment.index')); ?>" 
-       style="padding: 10px 20px; background-color: #00cc99; color: white; text-decoration: none;
-              border-radius: 6px; font-weight: bold; font-size: 14px;">
-        View Assigned Bikes
-    </a>
+                <a href="<?php echo e(route('assignment.index')); ?>" 
+                style="padding: 10px 20px; background-color: #00cc99; color: white; text-decoration: none;
+                border-radius: 6px; font-weight: bold; font-size: 14px;">
+                View Assigned Bikes
+                </a>
 
-    <a href="<?php echo e(route('assignment.unassigned')); ?>" 
-       style="padding: 10px 20px; background-color: #ea1414; color: white; text-decoration: none;
-              border-radius: 6px; font-weight: bold; font-size: 14px;">
-        View Unassigned Bikes
-    </a>
-</div>
+                <a href="<?php echo e(route('assignment.unassigned')); ?>" 
+                style="padding: 10px 20px; background-color: #ea1414; color: white; text-decoration: none;
+                border-radius: 6px; font-weight: bold; font-size: 14px;">
+                View Unassigned Bikes
+                </a>
+            </div>
 
         </div>
     </div>

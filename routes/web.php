@@ -37,5 +37,6 @@ Route::prefix('bikes/assignment')->group(function(){
     Route::get('/edit/{bike}/{rider}', [AssignmentController::class, 'edit'])->name('assignment.edit');
     Route::post('/update/{bike}/{rider}', [AssignmentController::class, 'update'])->name('assignment.update');
     Route::get('/unassigned', [AssignmentController::class, 'unassignedIndex'])->name('assignment.unassigned');
-    });
+    Route::delete('/delete/{bike}/{rider}/{assigned_at}', [AssignmentController::class, 'deleteRecord'])->name('assignment.delete');
+});
 
