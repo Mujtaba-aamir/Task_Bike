@@ -118,7 +118,6 @@ class AssignmentController extends Controller
         ->withPivot('assigned_at', 'unassigned_at');
         }])->get();
 
-    
         return view('assignment.unassigned', compact('unassigned'));
     }
 

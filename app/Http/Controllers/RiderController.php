@@ -24,7 +24,7 @@ class RiderController extends Controller
         'passport_number' => 'required|unique:riders,passport_number',
         'visa_expiry_date' => 'required|date|after:today',
         'date_of_birth' => 'required|date|before:today',
-        'status' => 'required|in:active,inactive' // ✅ Add this
+        'status' => 'required|in:Active,Inactive,Suspended' 
     ]);
     
     $createdRider = Rider::create([
@@ -35,7 +35,7 @@ class RiderController extends Controller
         'passport_number' => $rider['passport_number'],
         'visa_expiry_date' => $rider['visa_expiry_date'],
         'date_of_birth' => $rider['date_of_birth'],
-        'status' => $rider['status'] // ✅ Save it
+        'status' => $rider['status']
     ]);
 
 

@@ -215,13 +215,13 @@
             <input type="date" id="date_of_birth" value="{{ old('date_of_birth') }}" name="date_of_birth" required>
 
             <label for="status">Status:</label>
-<select name="status" required>
-    <option value="" hidden>Select Status</option>
-    <option value="active">Active</option>
-    <option value="inactive">Inactive</option>
-        <option value="inactive">Suspended</option>
-
-</select>
+            <select name="status" required>
+                <option value="" hidden>Select Status</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Suspended">Suspended</option>
+            
+            </select>
 
 
             <button type="submit">Submit</button>
