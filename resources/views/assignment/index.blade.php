@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Assigned Bikes</title>
+
   <style>
     * {
         margin: 0;
@@ -119,7 +120,7 @@
 
     .custom-alert {
         width: 350px;
-        margin: 100px auto 15px auto; 
+        margin: 100px auto 15px auto;
         padding: 15px;
         border-radius: 5px;
         color: #fff;
@@ -129,8 +130,20 @@
     }
 
     .custom-alert.success {
-        background-color: #00cc99; 
+        background-color: #00cc99;
     }
+
+    .popup-container {
+        position: absolute;
+        background: white;
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 6px;
+        display: none;
+        z-index: 2;
+    }
+
 
     @media (max-width: 768px) {
         h2.heading {
@@ -142,6 +155,7 @@
             padding: 10px;
         }
     }
+    
   </style>
 </head>
 <body>
@@ -161,9 +175,9 @@
 
   <div style="margin-top: 30px;">
     @if (session('msg'))
-        <div class="custom-alert success">
-            {{ session('msg') }}
-        </div>
+      <div class="custom-alert success">
+        {{ session('msg') }}
+      </div>
     @endif
   </div>
 
@@ -171,27 +185,47 @@
 
   <table>
     <tr>
-        <th>Bike Plate Number</th>
-        <th>Rider Name</th>
-        <th>Assigned At</th>
-        <th>Actions</th>
+      <th>Bike Plate Number</th>
+      <th>Rider Name</th>
+      <th>Assigned At</th>
+      <th>Actions</th>
     </tr>
     @foreach($assignments as $bike)
-        @foreach($bike->riders as $rider)
-        <tr>
-            <td>{{ $bike->plate_number }}</td>
-            <td>{{ $rider->full_name }}</td>
-            <td>{{ $rider->pivot->assigned_at }}</td>
-            <td>
-                <form action="{{ route('assignment.unassign', [$bike->id, $rider->id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to unassign this rider?')">
+      @foreach($bike->riders as $rider)
+      <tr>
+        <td>{{ $bike->plate_number }}</td>
+        <td>{{ $rider->full_name }}</td>
+        <td>{{ $rider->pivot->assigned_at }}</td>
+        <td>
+            <button type="button" onclick="openDateBox('{{ $bike->id }}', '{{ $rider->id }}')">Unassign</button>
+            <a href="{{ route('assignment.edit', [$bike->id, $rider->id]) }}">Update</a>    
+            <div id="dateBox-{{ $bike->id }}-{{ $rider->id }}" class="popup-container">
+                <form method="POST" action="{{ route('assignment.unassign', [$bike->id, $rider->id]) }}">
                     @csrf
-                    <button type="submit">Unassign</button>
+                    <label>Unassigned At:</label>
+                    <input type="date" name="unassigned_at" required />
+                    <div style="margin-top: 10px;">
+                        <button type="submit">Confirm</button>
+                        <button type="button" onclick="closeDateBox('{{ $bike->id }}', '{{ $rider->id }}')">Cancel</button>
+                    </div>
                 </form>
-                <a href="{{ route('assignment.edit', [$bike->id, $rider->id]) }}">Update</a>
-            </td>
-        </tr>
-        @endforeach
+            </div>
+        </td>
+    </tr>
+     @endforeach
     @endforeach
   </table>
+
+    <script>
+        function openDateBox(bikeId, riderId) {
+        const box = document.getElementById(`dateBox-${bikeId}-${riderId}`);
+        box.style.display = 'block';
+        }
+
+        function closeDateBox(bikeId, riderId) {
+        const box = document.getElementById(`dateBox-${bikeId}-${riderId}`);
+        box.style.display = 'none';
+        }
+    </script>
 </body>
 </html>

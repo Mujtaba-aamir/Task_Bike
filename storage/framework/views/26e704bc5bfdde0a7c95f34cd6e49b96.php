@@ -218,9 +218,9 @@
             <label for="status">Status:</label>
             <select name="status" required>
                 <option value="" hidden>Select Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                <option value="suspended">Suspended</option>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Suspended">Suspended</option>
             
             </select>
 

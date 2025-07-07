@@ -26,8 +26,7 @@ class AssignmentController extends Controller
         $request->validate([
             'bike_id' => 'required|exists:bikes,id',
             'rider_id' => 'required|exists:riders,id',
-            'assigned_at'    => 'required',
-            'unassigned_at' => 'required'
+            'assigned_at'    => 'required'
         ]);
 
         $bike = Bike::findOrFail($request->bike_id);
@@ -38,7 +37,6 @@ class AssignmentController extends Controller
 
         $bike->riders()->attach($request->rider_id, [
             'assigned_at' => $request->assigned_at,
-            'unassigned_at' => $request->unassigned_at,
             'status' => 'assigned'
         ]);
 
@@ -50,21 +48,25 @@ class AssignmentController extends Controller
         $assignments = Bike::whereHas('riders', function ($query) {
             $query->where('bike_rider.status', 'assigned');
         })->with(['riders' => function ($query) {
-            $query->wherePivot('status', 'assigned')->withPivot('assigned_at', 'unassigned_at');
+            $query->wherePivot('status', 'assigned')->withPivot('assigned_at');
         }])->get();
         return view('assignment.index', compact('assignments'));
     }
 
-    public function unassign($bike_id, $rider_id)
+    public function unassign(Request $request, $bike_id, $rider_id)
     {
+        $request->validate([
+            'unassigned_at' => 'required|date'
+        ]);
         $bike = Bike::findOrFail($bike_id);
-    
         $bike->riders()->updateExistingPivot($rider_id, [
             'status' => 'unassigned',
+            'unassigned_at' => $request->unassigned_at
         ]);
     
         return redirect()->back()->with('msg', 'Bike unassigned');
     }
+
 
 
     public function edit($bike_id, $rider_id)
@@ -91,7 +93,6 @@ class AssignmentController extends Controller
             'bike_id' => 'required|exists:bikes,id',
             'rider_id' => 'required|exists:riders,id',
             'assigned_at'    => 'required',
-            'unassigned_at' => 'required'
         ]);
 
         $oldBike = Bike::findOrFail($bike_id);
@@ -102,7 +103,6 @@ class AssignmentController extends Controller
         $newBike = Bike::findOrFail($request->bike_id);
         $newBike->riders()->attach($request->rider_id, [
             'assigned_at' => $request->assigned_at,
-            'unassigned_at' => $request->unassigned_at,
             'status' => 'assigned'
         ]);
 
@@ -121,8 +121,8 @@ class AssignmentController extends Controller
         return view('assignment.unassigned', compact('unassigned'));
     }
 
-   public function deleteRecord($bike_id, $rider_id, $assigned_at)
-{
+    public function deleteRecord($bike_id, $rider_id, $assigned_at)
+    {
         $bike = Bike::findOrFail($bike_id);
     
         $bike->riders()
@@ -131,7 +131,7 @@ class AssignmentController extends Controller
             ->detach();
     
         return redirect()->back()->with('msg', 'Record deleted successfully!');
-}
+    }
 
 
 }

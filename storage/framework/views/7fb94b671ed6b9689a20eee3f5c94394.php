@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Assigned Bikes</title>
+
   <style>
     * {
         margin: 0;
@@ -119,7 +120,7 @@
 
     .custom-alert {
         width: 350px;
-        margin: 100px auto 15px auto; 
+        margin: 100px auto 15px auto;
         padding: 15px;
         border-radius: 5px;
         color: #fff;
@@ -129,8 +130,20 @@
     }
 
     .custom-alert.success {
-        background-color: #00cc99; 
+        background-color: #00cc99;
     }
+
+    .popup-container {
+        position: absolute;
+        background: white;
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 6px;
+        display: none;
+        z-index: 2;
+    }
+
 
     @media (max-width: 768px) {
         h2.heading {
@@ -142,6 +155,7 @@
             padding: 10px;
         }
     }
+    
   </style>
 </head>
 <body>
@@ -161,10 +175,10 @@
 
   <div style="margin-top: 30px;">
     <?php if(session('msg')): ?>
-        <div class="custom-alert success">
-            <?php echo e(session('msg')); ?>
+      <div class="custom-alert success">
+        <?php echo e(session('msg')); ?>
 
-        </div>
+      </div>
     <?php endif; ?>
   </div>
 
@@ -172,28 +186,48 @@
 
   <table>
     <tr>
-        <th>Bike Plate Number</th>
-        <th>Rider Name</th>
-        <th>Assigned At</th>
-        <th>Actions</th>
+      <th>Bike Plate Number</th>
+      <th>Rider Name</th>
+      <th>Assigned At</th>
+      <th>Actions</th>
     </tr>
     <?php $__currentLoopData = $assignments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bike): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <?php $__currentLoopData = $bike->riders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <tr>
-            <td><?php echo e($bike->plate_number); ?></td>
-            <td><?php echo e($rider->full_name); ?></td>
-            <td><?php echo e($rider->pivot->assigned_at); ?></td>
-            <td>
-                <form action="<?php echo e(route('assignment.unassign', [$bike->id, $rider->id])); ?>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to unassign this rider?')">
+      <?php $__currentLoopData = $bike->riders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <tr>
+        <td><?php echo e($bike->plate_number); ?></td>
+        <td><?php echo e($rider->full_name); ?></td>
+        <td><?php echo e($rider->pivot->assigned_at); ?></td>
+        <td>
+            <button type="button" onclick="openDateBox('<?php echo e($bike->id); ?>', '<?php echo e($rider->id); ?>')">Unassign</button>
+            <a href="<?php echo e(route('assignment.edit', [$bike->id, $rider->id])); ?>">Update</a>    
+            <div id="dateBox-<?php echo e($bike->id); ?>-<?php echo e($rider->id); ?>" class="popup-container">
+                <form method="POST" action="<?php echo e(route('assignment.unassign', [$bike->id, $rider->id])); ?>">
                     <?php echo csrf_field(); ?>
-                    <button type="submit">Unassign</button>
+                    <label>Unassigned At:</label>
+                    <input type="date" name="unassigned_at" required />
+                    <div style="margin-top: 10px;">
+                        <button type="submit">Confirm</button>
+                        <button type="button" onclick="closeDateBox('<?php echo e($bike->id); ?>', '<?php echo e($rider->id); ?>')">Cancel</button>
+                    </div>
                 </form>
-                <a href="<?php echo e(route('assignment.edit', [$bike->id, $rider->id])); ?>">Update</a>
-            </td>
-        </tr>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+        </td>
+    </tr>
+     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </table>
+
+    <script>
+        function openDateBox(bikeId, riderId) {
+        const box = document.getElementById(`dateBox-${bikeId}-${riderId}`);
+        box.style.display = 'block';
+        }
+
+        function closeDateBox(bikeId, riderId) {
+        const box = document.getElementById(`dateBox-${bikeId}-${riderId}`);
+        box.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
 <?php /**PATH C:\Laravel Code\Task\resources\views/assignment/index.blade.php ENDPATH**/ ?>

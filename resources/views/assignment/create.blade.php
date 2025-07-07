@@ -210,10 +210,6 @@
                 <label for="rider_id">Select Assigned Date:</label>
                 <input type="date" name="assigned_at" id="">
            
-                <label for="rider_id">Select Unassigned Date:</label>
-                <input type="date" name="unassigned_at" id="">
-                
-
                 <button type="submit">Assign</button>
             </form>
 
