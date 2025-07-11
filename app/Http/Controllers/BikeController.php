@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bike;
+use App\Models\Rider;
+
 
 class BikeController extends Controller
 {
@@ -49,11 +51,15 @@ class BikeController extends Controller
         return view('bike.index', compact('bikes'));
     }
 
-    public function viewBike(string $id)
+    public function viewBike($id)
     {
-        $bike = Bike::find($id);
-        return view('bike.view',compact('bike'));
+        $bike = Bike::with(['riders' => function ($query) {
+        $query->where('bike_rider.status', 'assigned');
+        }])->findOrFail($id);
+
+        return view('bike.view', compact('bike'));
     }
+
 
     public function deleteBike(string $id)
     {
@@ -89,5 +95,7 @@ class BikeController extends Controller
            return redirect()->back()->with('msg', 'Bike Updated Successfully');
         }
         return redirect()->back()->with('msg', 'Bike Updation Unsuccessful');
-    }
+    }    
+
+
 }
