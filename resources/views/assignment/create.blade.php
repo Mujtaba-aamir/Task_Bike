@@ -225,6 +225,13 @@
                 border-radius: 6px; font-weight: bold; font-size: 14px;">
                 View Unassigned Bikes
                 </a>
+
+                <a href="{{ route('rent.create') }}" 
+                style="padding: 10px 20px; background-color: #ffab00; color: white; text-decoration: none;
+                border-radius: 6px; font-weight: bold; font-size: 14px;">
+                Rent Calculator
+                </a>
+
             </div>
 
         </div>

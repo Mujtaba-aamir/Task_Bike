@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BikeController;
 use App\Http\Controllers\RiderController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\RentController;
+
+
 
 Route::view('/', 'bike.home')->name('bike.home');
 
@@ -39,4 +42,10 @@ Route::prefix('bikes/assignment')->group(function(){
     Route::get('/unassigned', [AssignmentController::class, 'unassignedIndex'])->name('assignment.unassigned');
     Route::delete('/delete/{bike}/{rider}/{assigned_at}', [AssignmentController::class, 'deleteRecord'])->name('assignment.delete');
 });
+
+Route::prefix('bikes/rent')->group(function(){
+    Route::get('/create', [RentController::class, 'create'])->name('rent.create');
+    Route::get('/calculate', [RentController::class, 'calculateRent'])->name('rent.calculate');
+});
+
 
