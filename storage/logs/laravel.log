@@ -12364,6 +12364,7 @@ Did you mean one of these?
 [stacktrace]
 #0 {main}
 "} 
+<<<<<<< HEAD
 [2025-07-09 15:01:27] local.ERROR: View [rent_calculator] not found. {"exception":"[object] (InvalidArgumentException(code: 0): View [rent_calculator] not found. at C:\\Laravel Code\\Task\\vendor\\laravel\\framework\\src\\Illuminate\\View\\FileViewFinder.php:138)
 [stacktrace]
 #0 C:\\Laravel Code\\Task\\vendor\\laravel\\framework\\src\\Illuminate\\View\\FileViewFinder.php(78): Illuminate\\View\\FileViewFinder->findInPaths('rent_calculator', Array)
@@ -12724,4 +12725,96 @@ Did you mean one of these?
 [2025-07-10 19:17:12] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at C:\\Laravel Code\\Task\\vendor\\doctrine\\inflector\\lib\\Doctrine\\Inflector\\RulesetInflector.php:20)
 [stacktrace]
 #0 {main}
+"} 
+=======
+>>>>>>> main
+[2025-07-11 12:48:37] local.ERROR: syntax error, unexpected token "<<", expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"<<\", expecting end of file at E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\routes\\web.php:7)
+[stacktrace]
+#0 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(512): Illuminate\\Routing\\RouteFileRegistrar->register('E:\\\\SOLUTIONWIN\\\\...')
+#1 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(466): Illuminate\\Routing\\Router->loadRoutes('E:\\\\SOLUTIONWIN\\\\...')
+#2 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(206): Illuminate\\Routing\\Router->group(Array, 'E:\\\\SOLUTIONWIN\\\\...')
+#3 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Configuration\\ApplicationBuilder.php(248): Illuminate\\Routing\\RouteRegistrar->group('E:\\\\SOLUTIONWIN\\\\...')
+#4 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Configuration\\ApplicationBuilder->Illuminate\\Foundation\\Configuration\\{closure}()
+#5 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(84): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#8 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(754): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#9 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(162): Illuminate\\Container\\Container->call(Object(Closure))
+#10 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#11 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#12 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(84): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#15 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(754): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#16 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(143): Illuminate\\Container\\Container->call(Object(Closure))
+#17 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1153): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#18 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): Illuminate\\Foundation\\Application->bootProvider(Object(Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider))
+#19 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider), 'Illuminate\\\\Foun...')
+#20 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1130): array_walk(Array, Object(Closure))
+#21 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#22 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(341): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#23 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#24 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#25 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 {main}
+"} 
+[2025-07-11 12:48:38] local.ERROR: syntax error, unexpected token "<<", expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"<<\", expecting end of file at E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\routes\\web.php:7)
+[stacktrace]
+#0 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(512): Illuminate\\Routing\\RouteFileRegistrar->register('E:\\\\SOLUTIONWIN\\\\...')
+#1 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(466): Illuminate\\Routing\\Router->loadRoutes('E:\\\\SOLUTIONWIN\\\\...')
+#2 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(206): Illuminate\\Routing\\Router->group(Array, 'E:\\\\SOLUTIONWIN\\\\...')
+#3 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Configuration\\ApplicationBuilder.php(248): Illuminate\\Routing\\RouteRegistrar->group('E:\\\\SOLUTIONWIN\\\\...')
+#4 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Configuration\\ApplicationBuilder->Illuminate\\Foundation\\Configuration\\{closure}()
+#5 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(84): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#8 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(754): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#9 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(162): Illuminate\\Container\\Container->call(Object(Closure))
+#10 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#11 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#12 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(84): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#15 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(754): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#16 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(143): Illuminate\\Container\\Container->call(Object(Closure))
+#17 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1153): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#18 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): Illuminate\\Foundation\\Application->bootProvider(Object(Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider))
+#19 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider), 'Illuminate\\\\Foun...')
+#20 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1130): array_walk(Array, Object(Closure))
+#21 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#22 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(341): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#23 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#24 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#25 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 {main}
+"} 
+[2025-07-11 12:48:57] local.ERROR: syntax error, unexpected token "<<", expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"<<\", expecting end of file at E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\routes\\web.php:7)
+[stacktrace]
+#0 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(512): Illuminate\\Routing\\RouteFileRegistrar->register('E:\\\\SOLUTIONWIN\\\\...')
+#1 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(466): Illuminate\\Routing\\Router->loadRoutes('E:\\\\SOLUTIONWIN\\\\...')
+#2 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(206): Illuminate\\Routing\\Router->group(Array, 'E:\\\\SOLUTIONWIN\\\\...')
+#3 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Configuration\\ApplicationBuilder.php(248): Illuminate\\Routing\\RouteRegistrar->group('E:\\\\SOLUTIONWIN\\\\...')
+#4 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Configuration\\ApplicationBuilder->Illuminate\\Foundation\\Configuration\\{closure}()
+#5 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(84): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#7 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#8 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(754): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#9 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(162): Illuminate\\Container\\Container->call(Object(Closure))
+#10 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(59): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#11 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->Illuminate\\Foundation\\Support\\Providers\\{closure}()
+#12 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(84): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#14 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Object(Closure), Object(Closure))
+#15 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(754): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Object(Closure), Array, NULL)
+#16 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\ServiceProvider.php(143): Illuminate\\Container\\Container->call(Object(Closure))
+#17 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1153): Illuminate\\Support\\ServiceProvider->callBootedCallbacks()
+#18 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1131): Illuminate\\Foundation\\Application->bootProvider(Object(Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider))
+#19 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider), 'Illuminate\\\\Foun...')
+#20 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1130): array_walk(Array, Object(Closure))
+#21 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#22 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(341): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#23 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#24 E:\\SOLUTIONWIN\\Repo\\TempCode\\Task_Bike\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#25 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 {main}
 "} 
