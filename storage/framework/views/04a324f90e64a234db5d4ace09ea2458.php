@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bike Data</title>
+    <title>Rider Data</title>
 </head>
 <style>
     body {
@@ -81,11 +81,11 @@
     }
 
     #delete a {
-    color: #e74c3c; /* red */
+        color: #e74c3c; /* red */
     }
 
     #update a {
-    color: #f1c40f; /* yellow */
+        color: #f1c40f; /* yellow */
     }
 
   
@@ -128,65 +128,65 @@
         cursor: default;
     }
 
-      nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #222;
-      padding: 1rem 2rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 2;
-
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #222;
+        padding: 1rem 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
     }
 
     nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1rem;
-      position: relative;
-      transition: color 0.3s;
+        color: #fff;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 1rem;
+        position: relative;
+        transition: color 0.3s;
     }
 
     nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background-color: #00cc99;
-      transition: width 0.3s;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background-color: #00cc99;
+        transition: width 0.3s;
     }
 
     nav a:hover::after,
     nav a:focus::after {
-      width: 100%;
+        width: 100%;
     }
 </style>
 
 <body>
-     <nav>
-  <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
-    RideSecure
-  </div>
-  <div style="display: flex; justify-content: center; gap: 2rem;">
-    <a href="<?php echo e(route('bike.home')); ?>">Home</a>
-    <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
-    <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
-    <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
-    <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
-  </div>
-</nav>
-    <h1>Here's data of all the Registered Bikes</h1>
+    <nav>
+        <div style="margin-right: auto; color: #00cc99; font-size: 1.8rem; font-weight: bold;">
+            RideSecure
+        </div>
+        <div style="display: flex; justify-content: center; gap: 2rem;">
+            <a href="<?php echo e(route('bike.home')); ?>">Home</a>
+            <a href="<?php echo e(route('bike.create')); ?>">Register Your Bike</a>
+            <a href="<?php echo e(route('bike.index')); ?>">View Registered Bikes</a>
+            <a href="<?php echo e(route('rider.create')); ?>">Register Rider</a>
+            <a href="<?php echo e(route('rider.index')); ?>">View Registered Riders</a>
+            <a href="<?php echo e(route('assignment.create')); ?>">Bike Assignment</a>
+        </div>
+    </nav>
+    <h1>Here's data of all the Registered Riders</h1>
     
     <table class="container">
         <tr>
             <th>ID</th>
-            <th>Full Name</th>
+           <th>Full Name</th>
             <th>Mobile Number</th>
             <th>Email</th>
             <th>Emirates ID Number</th>
@@ -216,9 +216,9 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
     </table>
 
-<?php if(session('error')): ?>
-    <script>alert('<?php echo e(session('error')); ?>');</script>
-<?php endif; ?>
+    <?php if(session('error')): ?>
+        <script>alert('<?php echo e(session('error')); ?>');</script>
+    <?php endif; ?>
 
  
 </body>
